@@ -1,0 +1,17 @@
+{
+
+
+"custom/nextcloud": {
+     "exec": "~/.config/waybar/scripts/nextcloud.sh",
+    "format": "{icon}",
+      "return-type": "json",
+    "format-icons": {
+      "OK": "󰅠",
+      "SYNC" : "󰔪",
+      "ERROR" : "󰧠",
+      "NOP" : "󰨹",
+    }
+}
+
+}
+

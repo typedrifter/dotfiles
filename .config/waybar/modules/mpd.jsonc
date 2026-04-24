@@ -1,0 +1,8 @@
+{
+  "custom/mpd": {
+  "format": "♪ {}",
+  "exec": "~/.config/waybar/scripts/mpd.sh",
+  "on-click": "mpc toggle",
+  "on-click-right": "sonata"
+}
+}

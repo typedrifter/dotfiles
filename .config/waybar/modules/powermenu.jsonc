@@ -1,0 +1,46 @@
+
+{
+ "custom/power-button":  { 
+        "format": "", 
+        "tooltip": false, 
+        "cursor": true
+    },
+
+      "custom/shutdown":  { 
+        "format": " shutdown ", 
+        "tooltip": false, 
+        "cursor": true,
+        "on-click": "shutdown"
+    },
+
+      "custom/reboot":  { 
+        "format": " reboot ", 
+        "tooltip": false, 
+        "cursor": true,
+        "on-click": "reboot"
+    },
+
+      "custom/lock":  { 
+        "format": " lock ", 
+        "tooltip": false, 
+        "cursor": true,
+        "on-click": "qs -c lock"
+    },
+
+  "group/power-menu": {
+		"orientation": "horizontal",
+    "drawer": {
+    "click-to-reveal": true,
+        "transition-duration": 0,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+    },
+		"modules": [
+			"custom/power-button",
+      "custom/lock",
+			"custom/shutdown",
+			"custom/reboot"
+		]
+	},
+
+}
