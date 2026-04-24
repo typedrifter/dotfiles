@@ -1,0 +1,14 @@
+{"mpris": {
+	"format": "{player_icon} {artist} - {title}",
+	"format-paused": "󰏤",
+  "tooltip-format": "{player_icon} {artist} - {title}",
+	"player-icons": {
+		"default": " ",
+    "firefox": "󰖟"
+	},
+	"status-icons": {
+		"paused": "󰐎"
+	},
+	// "ignored-players": ["firefox"]
+}
+}

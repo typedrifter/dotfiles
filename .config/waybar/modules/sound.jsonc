@@ -1,0 +1,38 @@
+
+{
+  "pulseaudio": {
+    "format": "{icon}",
+        "cursor": true,
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋋",
+      "default": ["", "", ""]
+    },
+  },
+
+  "pulseaudio#icon": {
+    "format": "{icon} ",
+    "format-muted": "󰝖",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋋",
+      "default": "󱡬"
+    },
+    "on-click": "~/.config/waybar/scripts/switchaudio.sh"
+  },
+
+  "group/sound": {
+		"orientation": "horizontal",
+    "drawer": {
+    "click-to-reveal": true,
+        "transition-duration": 0,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+    },
+		"modules": [
+			"pulseaudio", "pulseaudio#icon","pulseaudio/slider", 
+		]
+	},
+
+}

@@ -1,0 +1,6 @@
+{
+  "custom/mail": {
+  "format": "{}",
+  "exec": "~/.config/waybar/scripts/mail.sh",
+}
+}

@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+  "modules-left": ["ext/workspaces" ],
+  "modules-center": ["clock",],
+  "modules-right": ["group/right-modules"],
+  "reload_style_on_change": true,
+
+
+  "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+
+  "idle_inhibitor": {
+    "format": "{icon} ",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
+},
+
+  "custom/power": {
+    "format" : "⏻ ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate",
+        },
+},
+  
+  "group/right-modules": {
+        "orientation": "horizontal",
+        "modules": ["mpris","group/sound", "custom/mail","custom/nextcloud",  "group/power-menu"]
+    },
+
+  "ext/workspaces": {
+    "format": "{name}",
+    "format-icons": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "urgent": "",
+    "active": "",
+    "default": ""
+  },
+    "sort-by-id": true,
+    "on-click": "activate",
+},
+
+   
+
+    "include": [ "~/.config/waybar/modules.jsonc" ]
+
+}
