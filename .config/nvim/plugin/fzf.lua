@@ -1,0 +1,15 @@
+vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
+
+local fzf_lua = require("fzf-lua")
+fzf_lua.setup()
+fzf_lua.register_ui_select()
+
+vim.keymap.set("n", "<leader>ff", fzf_lua.files, { desc = "[S]earch [F]iles" })
+vim.keymap.set("n", "<leader>fg", fzf_lua.live_grep, { desc = "[S]earch by [G]rep" })
+vim.keymap.set("n", "<leader>fG", function()
+	fzf_lua.live_grep_glob({ hidden = true })
+end, { desc = "[S]earch by [G]rep (include hidden files)" })
+vim.keymap.set("n", "<leader>b", function()
+	fzf_lua.buffers({ show_unloaded = false, exec_empty_query = true })
+end, { desc = "Search for [Buffer]" })
+vim.keymap.set("n", "<leader>fd", fzf_lua.diagnostics_workspace, { desc = "[S]earch [D]iagnostic" })

@@ -1,0 +1,7 @@
+-- vim.pack.add({ "https://github.com/vague-theme/vague.nvim" })
+-- vim.cmd.colorscheme("vague")
+-- vim.pack.add({ "https://github.com/oxfist/night-owl.nvim" })
+-- require("night-owl").setup()
+-- vim.cmd.colorscheme("night-owl")
+vim.pack.add({ { src = "https://github.com/catppuccin/nvim", name = "catppuccin" } })
+vim.cmd.colorscheme("catppuccin-nvim")
