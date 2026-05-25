@@ -1,0 +1,38 @@
+# -*- conf -*-
+# Night Owl
+
+[colors-dark]
+foreground=d6deeb
+background=021727
+
+regular0=010d18
+regular1=ff5874
+regular2=c5e478
+regular3=ffd602
+regular4=82aaff
+regular5=c792ea
+regular6=6ae9f0
+regular7=d6deeb
+
+bright0=262a39
+bright1=ff869a
+bright2=6CC85E
+bright3=faf39f
+bright4=78ccf0
+bright5=d1aaff
+bright6=7fdbca
+bright7=eeefff
+
+cursor=805a3e 80a4c2
+
+16=f78c6c
+17=ff869a
+
+selection-foreground=d6deeb
+selection-background=1d3b53
+
+search-box-no-match=010d18 ff5874
+search-box-match=d6deeb 063e5d
+
+jump-labels=010d18 ffd602
+urls=82aaff
