@@ -37,21 +37,12 @@
     },
 
   "ext/workspaces": {
-    "format": "{name}",
-    "format-icons": {
-    "1": "",
-    "2": "",
-    "3": "",
-    "4": "",
-    "5": "",
-    "urgent": "",
-    "active": "",
-    "default": ""
-  },
-    "sort-by-id": true,
+    "format": "{icon}",
+    "ignore-hidden": true,
     "on-click": "activate",
-},
-
+    "on-click-right": "deactivate",
+    "sort-by-id": true
+  },
    
 
     "include": [ "~/.config/waybar/modules.jsonc" ]

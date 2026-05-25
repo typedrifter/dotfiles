@@ -2,7 +2,6 @@
 {
   "pulseaudio": {
     "format": "{icon}",
-        "cursor": true,
     "format-muted": "",
     "format-icons": {
       "headphone": "󰋋",
@@ -31,7 +30,7 @@
         "transition-left-to-right": false,
     },
 		"modules": [
-			"pulseaudio", "pulseaudio#icon","pulseaudio/slider", 
+			"pulseaudio", "pulseaudio#icon"
 		]
 	},
 

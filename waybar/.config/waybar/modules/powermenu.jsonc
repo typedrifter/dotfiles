@@ -10,7 +10,7 @@
         "format": " shutdown ", 
         "tooltip": false, 
         "cursor": true,
-        "on-click": "shutdown"
+        "on-click": "systemctl poweroff"
     },
 
       "custom/reboot":  { 
