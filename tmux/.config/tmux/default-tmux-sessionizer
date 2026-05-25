@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if a Python project exists and source the virtual environment if present
+[[ -f pyproject.toml || -f requirements.txt || -f setup.py ]] && {
+    [[ -d venv ]] && source venv/bin/activate
+    [[ -d .venv ]] && source .venv/bin/activate
+}
+
+[[ -f .sync.sh ]] && {
+  if tmux list-windows -f '#{==:#W,sync}' -F '#W' | grep -q .; then
+  echo "Window 'terminal' exists"
+else
+  echo "Window 'terminal' does not exist"
+  tmux new-window -n sync ./.sync.sh
+  tmux select-window -t 1
+fi
+}
+
+# Open Neovim
+exec nvim 
+
