@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+
+mkdir -p ~/Pictures/screenshots
+FILE="$HOME/Pictures/screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png"
+
+grim "$FILE"
+wl-copy < "$FILE"
+
+(
+    ACTION=$(notify-send \
+        --app-name="Screenshot" \
+        --icon="$FILE" \
+        --action="default=Copy to Clipboard" \
+        --wait \
+        "Screenshot Saved" \
+        "$(basename "$FILE")" 2>/dev/null || echo "")
+
+    if [[ "$ACTION" == "default" ]]; then
+        wl-copy < "$FILE"
+        notify-send \
+            --app-name="Screenshot" \
+            --icon="$FILE" \
+            "Copied to Clipboard" \
+            "$(basename "$FILE")"
+    fi
+) &
