@@ -1,0 +1,26 @@
+# ====================== Basic Settings ======================
+set drawbox false
+set preview true
+set icons true
+
+set cursorpreviewfmt "\033[7;90m"
+
+
+map <enter> shell
+
+# ====================== Chafa Image Preview ======================
+# set previewer ~/.config/lf/scripts/preview.sh
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+cmd delete %set -f; echo -e "\n→ Trash $(echo "$fx" | wc -l) selected items? [y/N] "; read -n1 -r ans; echo; if [[ "${ans^^}" == "Y" ]]; then printf '%s\n' $fx | xargs -d'\n' trashy && echo "Moved to trash"; else echo "Cancelled"; fi
+
+# map <delete> delete
+
+map d
+map <delete> %set -f;~/.config/lf/scripts/trash.sh "$fx"
+map dd %set -f;~/.config/lf/scripts/trash.sh -y "$fx"
+
+map a %~/.config/lf/scripts/mkdir.sh "$PWD"
