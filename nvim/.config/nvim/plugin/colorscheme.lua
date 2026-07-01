@@ -27,17 +27,47 @@ vim.pack.add({ "https://github.com/EdenEast/nightfox.nvim" })
 vim.pack.add({ "scottmckendry/cyberdream.nvim" })
 vim.pack.add({ "https://github.com/catppuccin/nvim" })
 vim.pack.add({ "https://github.com/olimorris/onedarkpro.nvim" })
-vim.pack.add({ "https://github.com/cpea2506/one_monokai.nvim" })
--- vim.cmd("colorscheme tokyonight")
+vim.pack.add({ "https://github.com/ray-x/aurora" })
+-- vim.pack.add({ "https://github.com/cpea2506/one_monokai.nvim" })
+-- -- vim.cmd("colorscheme tokyonight")
+--
+-- require("one_monokai").setup({
+-- 	transparent = true,
+-- 	colors = {},
+-- 	highlights = function(colors)
+-- 		return {}
+-- 	end,
+-- 	italics = true,
+-- 	cache = {
+-- 		path = vim.fs.joinpath(vim.fn.stdpath("cache"), "one_monokai"),
+-- 	},
+-- })
 
-require("one_monokai").setup({
+require("cyberdream").setup({
+
+	-- Enable transparent background
 	transparent = true,
-	colors = {},
-	highlights = function(colors)
-		return {}
-	end,
-	italics = true,
-	cache = {
-		path = vim.fs.joinpath(vim.fn.stdpath("cache"), "one_monokai"),
-	},
+
+	-- Reduce the overall saturation of colours for a more muted look
+	saturation = 0.8, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
+
+	-- Replace all fillchars with ' ' for the ultimate clean look
+	hide_fillchars = true,
+
+	-- Apply a modern borderless look to pickers like Telescope, Snacks Picker & Fzf-Lua
+	borderless_pickers = true,
+
+	-- Set terminal colors used in `:terminal`
+	terminal_colors = true,
+
+	-- Match background to foot terminal (#021727)
+	-- colors = {
+	-- 	bg = "#021727",
+	-- },
+})
+
+vim.cmd("colorscheme cyberdream")
+
+require("everforest").setup({
+	background = "hard",
 })
