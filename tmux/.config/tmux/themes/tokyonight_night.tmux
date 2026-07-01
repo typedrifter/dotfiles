@@ -20,8 +20,8 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-set -g status-left ""
-set -g status-right "#[align=centre,fg=#15161e,bg=#7aa2f7,bold] #S #[default]"
+set -g status-left "#[fg=#1f2335,bg=#bb9af7,bold] #S #[default]"
+set -g status-right ""
 
 setw -g window-status-activity-style "underscore,fg=#a9b1d6,bg=#16161e"
 setw -g window-status-separator ""
