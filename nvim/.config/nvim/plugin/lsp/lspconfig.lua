@@ -9,8 +9,14 @@ for type, icon in pairs(signs) do
 end
 vim.diagnostic.config({ signs = { text = diagnostic_signs } })
 
+vim.lsp.config("qmlls", {
+	cmd = { "qmlls6" },
+})
+
 vim.lsp.enable("tsgo")
 vim.lsp.enable("oxlint")
 vim.lsp.enable("oxfmt")
 vim.lsp.enable("gopls")
 vim.lsp.enable("bashls")
+vim.lsp.enable("qmlls")
+vim.lsp.enable("lua_ls")

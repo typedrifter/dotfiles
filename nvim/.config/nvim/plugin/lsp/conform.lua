@@ -1,5 +1,7 @@
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
+vim.g.c_syntax_for_h = 1
+
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -9,6 +11,7 @@ require("conform").setup({
 		astro = { "prettierd", "prettier", lsp_format = "first" },
 		typescriptreact = { "oxfmt", lsp_format = "first" },
 		markdown = { "markdownlint-cli2", lsp_format = "first" },
+		c = { "clang-format", lsp_format = "first" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()

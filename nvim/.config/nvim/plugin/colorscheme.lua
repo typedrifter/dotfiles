@@ -7,7 +7,15 @@
 -- vim.cmd.colorscheme("catppuccin-nvim")
 -- vim.pack.add({ { src = "https://github.com/EdenEast/nightfox.nvim" } })
 -- vim.cmd.colorscheme("duskfox")
--- vim.pack.add({ { src = "https://github.com/kepano/flexoki-neovim", name = "flexoki" } })
+vim.pack.add({ { src = "https://github.com/kepano/flexoki-neovim", name = "flexoki" } })
+vim.pack.add({ { src = "https://github.com/folke/tokyonight.nvim" } })
+vim.pack.add({ "https://github.com/ray-x/aurora" })
+vim.pack.add({ "https://github.com/sainnhe/sonokai" })
+vim.pack.add({ "https://github.com/shatur/neovim-ayu" })
+vim.pack.add({ "https://github.com/marko-cerovac/material.nvim" })
+vim.pack.add({ "https://github.com/bluz71/vim-nightfly-colors" })
+vim.pack.add({ "https://github.com/bluz71/vim-moonfly-colors" })
+vim.pack.add({ "https://github.com/serhez/teide.nvim" })
 -- vim.cmd("colorscheme flexoki-dark")
 -- vim.pack.add({ "https://github.com/olimorris/onedarkpro.nvim" })
 -- vim.cmd("colorscheme onedark")
@@ -27,10 +35,9 @@ vim.pack.add({ "https://github.com/EdenEast/nightfox.nvim" })
 vim.pack.add({ "scottmckendry/cyberdream.nvim" })
 vim.pack.add({ "https://github.com/catppuccin/nvim" })
 vim.pack.add({ "https://github.com/olimorris/onedarkpro.nvim" })
-vim.pack.add({ "https://github.com/ray-x/aurora" })
--- vim.pack.add({ "https://github.com/cpea2506/one_monokai.nvim" })
--- -- vim.cmd("colorscheme tokyonight")
---
+vim.pack.add({ "https://github.com/cpea2506/one_monokai.nvim" })
+-- vim.cmd("colorscheme tokyonight")
+
 -- require("one_monokai").setup({
 -- 	transparent = true,
 -- 	colors = {},
@@ -42,32 +49,34 @@ vim.pack.add({ "https://github.com/ray-x/aurora" })
 -- 		path = vim.fs.joinpath(vim.fn.stdpath("cache"), "one_monokai"),
 -- 	},
 -- })
-
+--
 require("cyberdream").setup({
 
 	-- Enable transparent background
-	transparent = true,
+	transparent = false,
 
 	-- Reduce the overall saturation of colours for a more muted look
-	saturation = 0.8, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
+	saturation = 1, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
 
 	-- Replace all fillchars with ' ' for the ultimate clean look
 	hide_fillchars = true,
 
 	-- Apply a modern borderless look to pickers like Telescope, Snacks Picker & Fzf-Lua
-	borderless_pickers = true,
+	borderless_pickers = false,
 
 	-- Set terminal colors used in `:terminal`
 	terminal_colors = true,
 
 	-- Match background to foot terminal (#021727)
-	-- colors = {
-	-- 	bg = "#021727",
-	-- },
+	colors = {
+		bg = "#021727",
+	},
 })
-
-vim.cmd("colorscheme cyberdream")
-
+--
+-- vim.cmd("colorscheme cyberdream")
+require("axiom_neon").setup({})
 require("everforest").setup({
 	background = "hard",
 })
+
+vim.cmd("colorscheme tokyonight-night")
