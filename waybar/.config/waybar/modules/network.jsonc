@@ -1,0 +1,45 @@
+
+{
+
+"network#icon": {
+    "interface": "wlp3s0",
+    "format": "",
+    "format-wifi": "{icon}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "󰊗",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+},
+"network#info": {
+    "interface": "wlp3s0",
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%)",
+    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+},
+
+
+  "group/network": {
+		"orientation": "horizontal",
+    "drawer": {
+    "click-to-reveal": true,
+        "transition-duration": 0,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+    },
+		"modules": [
+      "network#icon",
+      "network#info",
+		]
+	},
+
+}
