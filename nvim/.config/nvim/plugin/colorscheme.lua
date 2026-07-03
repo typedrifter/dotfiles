@@ -74,7 +74,6 @@ require("cyberdream").setup({
 })
 --
 -- vim.cmd("colorscheme cyberdream")
-require("axiom_neon").setup({})
 require("everforest").setup({
 	background = "hard",
 })

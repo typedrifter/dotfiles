@@ -1,0 +1,5 @@
+---
+# Desktop. Starts identical to laptop; prune waybar modules in
+# waybar/.config/waybar/config.desktop.jsonc as needed.
+waybar_variant: desktop
+foot_variant: desktop

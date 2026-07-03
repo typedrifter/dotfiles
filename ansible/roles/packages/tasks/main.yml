@@ -1,0 +1,24 @@
+---
+# Installs system (pacman) and AUR (yay) packages.
+# state: present  = install if missing, don't upgrade (mirrors `--needed`).
+# update_cache: no = don't run -Sy (avoids partial-upgrade footgun).
+# Lists come from group_vars/all.yml (+ optional *_extra in host_vars).
+
+- name: merge package lists
+  ansible.builtin.set_fact:
+    _pacman_pkgs: "{{ pacman_packages_base | default([]) + pacman_packages_extra | default([]) }}"
+    _yay_pkgs: "{{ yay_packages_base | default([]) + yay_packages_extra | default([]) }}"
+
+- name: install pacman packages
+  community.general.pacman:
+    name: "{{ _pacman_pkgs }}"
+    state: present
+    update_cache: false
+  become: true
+  when: _pacman_pkgs | length > 0
+
+- name: install AUR packages with yay
+  ansible.builtin.command: "yay -S --needed --noconfirm {{ _yay_pkgs | join(' ') }}"
+  when: _yay_pkgs | length > 0
+  register: _yay_result
+  changed_when: "'there is nothing to do' not in _yay_result.stdout"

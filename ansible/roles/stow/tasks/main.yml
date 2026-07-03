@@ -1,0 +1,15 @@
+---
+# Restows every package with --no-folding (per-file symlinks into $HOME) so
+# editing ~/.config/<pkg>/... edits the repo file directly.
+# --restow is idempotent (re-creates links, removes stale ones).
+
+- name: merge stow package lists
+  ansible.builtin.set_fact:
+    _stow_packages: "{{ stow_packages_base | default([]) + stow_packages_extra | default([]) }}"
+
+- name: restow packages
+  ansible.builtin.command: "stow --target={{ stow_target }} --restow --no-folding {{ item }}"
+  args:
+    chdir: "{{ stow_src }}"
+  loop: "{{ _stow_packages }}"
+  changed_when: false

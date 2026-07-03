@@ -133,3 +133,50 @@ docs: add setup instructions for new machine
 docs(nvim): document keybindings
 docs(hypr): explain monitor layout
 ```
+
+---
+
+# Provisioning (Ansible + Stow)
+
+Stow packages live at the repo root (one dir per app). Ansible drives stow
+rather than replacing it: the `stow` role restows each package with
+`--no-folding` so editing `~/.config/<pkg>/...` edits the repo file directly.
+
+## Machines
+
+| hostname | variant | notes |
+|---|---|---|
+| `flc-thinkpad` | `laptop` | full waybar module set |
+| `flc-desktop` | `desktop` | prune modules in `config.desktop.jsonc` |
+
+Per-hosts vars: `ansible/host_vars/<hostname>.yml`. Shared: `ansible/group_vars/all.yml`.
+
+## Waybar per-machine config
+
+`waybar/.config/waybar/config.<variant>.jsonc` holds each machine's bar layout.
+The `waybar` role symlinks `config.jsonc -> config.<variant>.jsonc` in-repo
+**before** stow runs, so the host-specific layout flows into `~/.config/waybar/`
+via stow. `config.jsonc` itself is gitignored (runtime, host-specific).
+
+## Foot per-machine config
+
+Same pattern as waybar: `foot/.config/foot/foot.<variant>.ini` holds per-machine
+overrides (e.g. `font=monospace:size=10` on laptop). The `foot` role symlinks
+`foot.local.ini -> foot.<foot_variant>.ini` in-repo before stow, and `foot.ini`
+includes `foot.local.ini` from its `[main]` section. `foot.local.ini` is
+gitignored (runtime, host-specific).
+
+## Apply
+
+```sh
+# from each machine, after `git pull`:
+ansible-playbook ansible/local.yml -i ansible/inventory.yml
+
+# or via auto-pull (needs deploy key for the private repo):
+ansible-pull -U git@github.com:FLchs/dotfiles_wayland.git ansible/local.yml
+```
+
+## Fresh install
+
+See `ansible/bootstrap.md` for one-time steps (install ansible/git/stow/yay,
+set hostname, clone, apply) and the tentative package reference list.
