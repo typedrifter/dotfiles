@@ -158,6 +158,14 @@ The `waybar` role symlinks `config.jsonc -> config.<variant>.jsonc` in-repo
 **before** stow runs, so the host-specific layout flows into `~/.config/waybar/`
 via stow. `config.jsonc` itself is gitignored (runtime, host-specific).
 
+## Foot per-machine config
+
+Same pattern as waybar: `foot/.config/foot/foot.<variant>.ini` holds per-machine
+overrides (e.g. `font=monospace:size=10` on laptop). The `foot` role symlinks
+`foot.local.ini -> foot.<foot_variant>.ini` in-repo before stow, and `foot.ini`
+includes `foot.local.ini` from its `[main]` section. `foot.local.ini` is
+gitignored (runtime, host-specific).
+
 ## Apply
 
 ```sh

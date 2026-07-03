@@ -8,7 +8,9 @@
 #   1. packages  -- install system/AUR pkgs (idempotent, skips when lists empty)
 #   2. waybar    -- create config.jsonc -> config.<variant>.jsonc symlink IN REPO
 #                   (must run before stow so the link is stowed into ~/.config/)
-#   3. stow      -- restow all packages into $HOME
+#   3. foot      -- create foot.local.ini -> foot.<variant>.ini symlink IN REPO
+#                   (must run before stow, same reason as waybar)
+#   4. stow      -- restow all packages into $HOME
 
 - hosts: localhost
   connection: local
@@ -24,4 +26,5 @@
   roles:
     - packages
     - waybar
+    - foot
     - stow

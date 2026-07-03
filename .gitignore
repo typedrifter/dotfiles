@@ -1,5 +1,6 @@
-# Ansible-managed runtime symlink (host-specific: config.laptop.jsonc | config.desktop.jsonc)
+# Ansible-managed runtime symlinks (host-specific variant files)
 waybar/.config/waybar/config.jsonc
+foot/.config/foot/foot.local.ini
 
 # tmux plugins installed by TPM at runtime (gitlinks removed from index)
 tmux/.config/tmux/plugins/
