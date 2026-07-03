@@ -1,0 +1,27 @@
+{
+  "layer": "top",
+  "modules-left": ["ext/workspaces" ],
+  "modules-center": ["clock",],
+  "modules-right": ["group/right-modules"],
+  "reload_style_on_change": true,
+
+  "clock": {
+    "format-alt": "{:%a, %d. %b  %H:%M}"
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon} ",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+
+  "ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": true,
+    "on-click": "activate",
+    "on-click-right": "deactivate",
+    "sort-by-id": true
+  }
+}

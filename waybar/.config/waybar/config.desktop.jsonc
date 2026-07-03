@@ -1,50 +1,25 @@
 {
-  "layer": "top",
-  "modules-left": ["ext/workspaces" ],
-  "modules-center": ["clock",],
-  "modules-right": ["group/right-modules"],
-  "reload_style_on_change": true,
-
-
-  "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-
-  "idle_inhibitor": {
-    "format": "{icon} ",
-    "format-icons": {
-        "activated": "",
-        "deactivated": ""
-    }
-},
+  "include": [
+    "~/.config/waybar/modules.jsonc",
+    "~/.config/waybar/config.shared.jsonc",
+    "~/.config/waybar/modules-desktop/*"
+  ],
 
   "custom/power": {
     "format" : "⏻ ",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "~/.config/waybar/power_menu.xml",
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate",
-        },
-},
-  
-  "group/right-modules": {
-        "orientation": "horizontal",
-        "modules": ["mpris","group/sound", "custom/mail","custom/nextcloud",  "group/power-menu"]
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate",
     },
-
-  "ext/workspaces": {
-    "format": "{icon}",
-    "ignore-hidden": true,
-    "on-click": "activate",
-    "on-click-right": "deactivate",
-    "sort-by-id": true
   },
-   
 
-    "include": [ "~/.config/waybar/modules.jsonc", "~/.config/waybar/modules-desktop/*" ]
-
+  "group/right-modules": {
+    "orientation": "horizontal",
+    "modules": ["mpris","group/sound", "custom/mail","custom/nextcloud",  "group/power-menu"]
+  }
 }

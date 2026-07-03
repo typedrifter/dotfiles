@@ -2,19 +2,18 @@
 # Entry point for both `ansible-playbook` and `ansible-pull`.
 #
 # Targets implicit localhost (local connection) and loads the matching
-# host_vars/<ansible_hostname>.yml so each machine gets its own waybar variant.
+# host_vars/<ansible_hostname>.yml so each machine gets its own variant.
 #
 # Execution order is deliberate:
 #   0. git pull --ff-only -- fast-forward to upstream before anything else;
 #      aborts the play on divergence/network failure so the system stays in
 #      its pre-existing state. Must run before include_vars so host_vars
 #      reflect the just-pulled version.
-#   1. packages  -- install system/AUR pkgs (idempotent, skips when lists empty)
-#   2. waybar    -- create config.jsonc -> config.<variant>.jsonc symlink IN REPO
-#                   (must run before stow so the link is stowed into ~/.config/)
-#   3. foot      -- create foot.local.ini -> foot.<variant>.ini symlink IN REPO
-#                   (must run before stow, same reason as waybar)
-#   4. stow      -- restow all packages into $HOME
+#   1. packages        -- install system/AUR pkgs (idempotent, skips when empty)
+#   2. variant-config  -- create per-variant config symlinks IN REPO
+#                         (foot.local.ini, waybar config.jsonc; must run before
+#                         stow so the links are stowed into ~/.config/)
+#   3. stow            -- restow all packages into $HOME
 
 - hosts: localhost
   connection: local
@@ -35,6 +34,5 @@
         depth: 1
   roles:
     - packages
-    - waybar
-    - foot
+    - variant-config
     - stow
