@@ -1,0 +1,20 @@
+---
+# Shared variables for all machines.
+# Per-host overrides (e.g. waybar_variant) live in host_vars/<hostname>.yml.
+
+# Stow -- one package per app dir, kept at the repo root.
+stow_target: "{{ lookup('env', 'HOME') }}"
+stow_src: "{{ playbook_dir }}/../"   # repo root
+stow_packages_base:
+  - foot
+  - lf
+  - nvim
+  - tmux
+  - zsh
+  - scripts
+  - mango
+  - waybar
+
+# Package lists -- populate as you go. The packages role no-ops when empty.
+pacman_packages_base: []
+yay_packages_base: []

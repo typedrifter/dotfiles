@@ -1,0 +1,20 @@
+---
+# Installs system (pacman) and AUR (yay) packages.
+# `--needed` makes both idempotent (skips already-installed).
+# Lists come from group_vars/all.yml (+ optional *_extra in host_vars).
+
+- name: merge package lists
+  ansible.builtin.set_fact:
+    _pacman_pkgs: "{{ pacman_packages_base | default([]) + pacman_packages_extra | default([]) }}"
+    _yay_pkgs: "{{ yay_packages_base | default([]) + yay_packages_extra | default([]) }}"
+
+- name: install pacman packages
+  ansible.builtin.command: "pacman -S --needed --noconfirm {{ _pacman_pkgs | join(' ') }}"
+  become: true
+  when: _pacman_pkgs | length > 0
+  changed_when: false
+
+- name: install AUR packages with yay
+  ansible.builtin.command: "yay -S --needed --noconfirm {{ _yay_pkgs | join(' ') }}"
+  when: _yay_pkgs | length > 0
+  changed_when: false

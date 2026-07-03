@@ -1,0 +1,12 @@
+---
+# Two managed machines. Each runs ansible-playbook / ansible-pull locally.
+# Host-specific vars live in host_vars/<hostname>.yml, loaded by local.yml
+# via ansible_hostname (the OS fact) -- so this inventory is documentation and
+# future-SSH-ready, not strictly required for local apply.
+
+all:
+  hosts:
+    flc-thinkpad:
+      ansible_connection: local
+    flc-desktop:
+      ansible_connection: local

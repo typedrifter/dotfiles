@@ -1,0 +1,12 @@
+---
+# Creates config.jsonc -> config.<waybar_variant>.jsonc INSIDE the repo, before
+# stow runs. After stow, ~/.config/waybar/config.jsonc resolves through to the
+# host variant file in the repo (edit there, edits propagate via stow).
+# config.jsonc itself is gitignored (runtime, host-specific data).
+
+- name: link host-specific waybar config.jsonc -> config.{{ waybar_variant }}.jsonc
+  ansible.builtin.file:
+    src: "config.{{ waybar_variant }}.jsonc"
+    dest: "{{ stow_src }}waybar/.config/waybar/config.jsonc"
+    state: link
+    force: true

@@ -1,0 +1,8 @@
+# Ansible-managed runtime symlink (host-specific: config.laptop.jsonc | config.desktop.jsonc)
+waybar/.config/waybar/config.jsonc
+
+# tmux plugins installed by TPM at runtime (gitlinks removed from index)
+tmux/.config/tmux/plugins/
+
+# opencode local state
+.opencode/node_modules/

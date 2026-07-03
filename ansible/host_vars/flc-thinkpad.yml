@@ -1,0 +1,10 @@
+---
+# Laptop (current machine). Swap view: bigger/different waybar modules here.
+waybar_variant: laptop
+
+# Add laptop-only packages as you discover them, e.g.:
+# pacman_packages_extra:
+#   - brightnessctl
+#   - tlp
+# yay_packages_extra:
+#   - ...
