@@ -5,6 +5,10 @@
 # host_vars/<ansible_hostname>.yml so each machine gets its own waybar variant.
 #
 # Execution order is deliberate:
+#   0. git pull --ff-only -- fast-forward to upstream before anything else;
+#      aborts the play on divergence/network failure so the system stays in
+#      its pre-existing state. Must run before include_vars so host_vars
+#      reflect the just-pulled version.
 #   1. packages  -- install system/AUR pkgs (idempotent, skips when lists empty)
 #   2. waybar    -- create config.jsonc -> config.<variant>.jsonc symlink IN REPO
 #                   (must run before stow so the link is stowed into ~/.config/)
@@ -17,6 +21,12 @@
   vars_files:
     - group_vars/all.yml
   pre_tasks:
+    - name: git pull latest changes
+      ansible.builtin.command: "git -C {{ playbook_dir | dirname }} pull --ff-only"
+      register: _dotfiles_pull
+      changed_when: "'Updating' in _dotfiles_pull.stdout or 'Fast-forward' in _dotfiles_pull.stdout"
+      run_once: true
+
     - name: load host-specific variables for {{ ansible_facts['hostname'] }}
       ansible.builtin.include_vars:
         dir: host_vars
