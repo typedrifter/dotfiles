@@ -125,10 +125,10 @@ alias neomutt="TERM=xterm-direct neomutt"
 eval "$(starship init zsh)"
 
 # Created by `pipx` on 2024-09-06 07:56:10
-export PATH="$PATH:/home/francois/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # bun completions
-[ -s "/home/francois/.bun/_bun" ] && source "/home/francois/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
