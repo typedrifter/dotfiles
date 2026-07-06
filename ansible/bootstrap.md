@@ -125,7 +125,7 @@ yay_packages_base:
   # - awww-git           # ?verify -- wallpaper daemon
   # - quickshell-git     # ?verify -- provides `qs` for quicklock
   # - wlr-dpms           # ?verify -- used by lock.sh (source unclear)
-  # - lsdesktop          # ?verify -- fzf-launcher uses lsdesktop/desklaunch
+  # - lsdesktop          # ?verify -- fzf-apps uses lsdesktop/desklaunch
   # - desklaunch         # ?verify -- see lsdesktop
   # - rmpc               # ?verify -- SUPER,m scratchpad binds rmpc
 ```

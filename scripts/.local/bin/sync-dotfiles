@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ansible-recap -- run ansible-playbook and fire a notify-send recap.
+# sync-dotfiles -- run ansible-playbook and fire a notify-send recap.
 #
 # Defaults DBUS_SESSION_BUS_ADDRESS to the canonical per-uid session bus
 # socket so notify-send can reach mako/dunst even from non-interactive
@@ -22,7 +22,7 @@ if [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
     export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${UID}/bus"
 fi
 
-log_file="$(mktemp -t ansible-recap.XXXXXX.log)"
+log_file="$(mktemp -t sync-dotfiles.XXXXXX.log)"
 trap 'rm -f "$log_file"' EXIT
 
 set +e
