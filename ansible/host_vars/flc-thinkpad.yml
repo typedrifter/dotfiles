@@ -1,5 +1,4 @@
 ---
-# Laptop (current machine). Swap view: bigger/different waybar modules here.
 variant: laptop
 
 # Add laptop-only packages as you discover them, e.g.:

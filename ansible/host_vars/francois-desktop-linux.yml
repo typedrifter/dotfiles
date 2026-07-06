@@ -1,4 +1,2 @@
 ---
-# Desktop (current machine). Starts identical to laptop; prune waybar modules
-# in waybar/.config/waybar/config.desktop.jsonc as needed.
 variant: desktop
