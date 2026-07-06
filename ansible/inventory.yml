@@ -8,5 +8,5 @@ all:
   hosts:
     flc-thinkpad:
       ansible_connection: local
-    flc-desktop:
+    francois-desktop-linux:
       ansible_connection: local
