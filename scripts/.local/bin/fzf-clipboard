@@ -1,10 +1,10 @@
 #!/bin/sh
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --color=fg:#aeafb0,fg+:#d0d0d0,bg:#021727,bg+:#021727
-  --color=hl:#5f87af,hl+:#577f63,info:#dbc074,marker:#87ff00
-  --color=prompt:#d7005f,spinner:#af5fff,pointer:#021727,header:#87afaf
-  --color=gutter:#021727,border:#cdcecf,label:#aeaeae,query:#d9d9d9
+  --color=fg:#a9b1d6,fg+:#c0caf5,bg:#1a1b26,bg+:#283457
+  --color=hl:#f7768e,hl+:#ff9e64,info:#565f89,marker:#9ece6a
+  --color=prompt:#7dcfff,spinner:#89ddff,pointer:#9ece6a,header:#f7768e
+  --color=gutter:#1a1b26,border:#565f89,label:#565f89,query:#a9b1d6
   --margin="0" --padding="0" --prompt="" --marker=" "
   --pointer=" " --separator="─" --scrollbar="│" --layout="reverse"
   --info="right"'
