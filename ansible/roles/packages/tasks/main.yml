@@ -15,6 +15,7 @@
     state: present
     update_cache: false
   become: true
+  become_user: root
   when: _pacman_pkgs | length > 0
 
 - name: install AUR packages with yay

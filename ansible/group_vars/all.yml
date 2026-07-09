@@ -1,8 +1,8 @@
 ---
-# Shared variables for all machines.
-# Per-host overrides (e.g. variant) live in host_vars/<hostname>.yml.
+# shared variables for all machines.
+# per-host overrides (e.g. variant) live in host_vars/<hostname>.yml.
 
-# Stow -- one package per app dir, kept at the repo root.
+# stow -- one package per app dir, kept at repo root.
 stow_target: "{{ lookup('env', 'HOME') }}"
 stow_src: "{{ playbook_dir }}/../"   # repo root
 stow_packages_base:
@@ -15,6 +15,13 @@ stow_packages_base:
   - mango
   - waybar
 
-# Package lists -- populate as you go. The packages role no-ops when empty.
-pacman_packages_base: []
+# per-host config symlinks created before stow runs.
+# src lives next to dest inside the stow package.
+variant_links:
+  - { app: foot,   src: foot,   dest: foot.local.ini, ext: ini }
+  - { app: waybar, src: config, dest: config.jsonc,    ext: jsonc }
+
+# package lists -- populate as you go. packages role no-ops when empty.
+pacman_packages_base:
+  - bitwarden-cli
 yay_packages_base: []

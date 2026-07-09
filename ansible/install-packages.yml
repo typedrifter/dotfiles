@@ -1,0 +1,18 @@
+---
+# package installation playbook.
+#
+# pacman runs as root. yay runs as normal user. use -K so ansible can ask sudo
+# password for pacman tasks.
+#
+#   ansible-playbook ansible/install-packages.yml -i ansible/inventory.yml -K
+
+- hosts: localhost
+  connection: local
+  vars_files:
+    - group_vars/all.yml
+  tasks:
+    - ansible.builtin.include_role:
+        name: load-host-vars
+
+    - ansible.builtin.include_role:
+        name: packages

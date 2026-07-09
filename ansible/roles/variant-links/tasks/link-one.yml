@@ -1,0 +1,15 @@
+---
+# check one variant source and link it if it exists.
+
+- name: check variant source exists
+  ansible.builtin.stat:
+    path: "{{ stow_src }}{{ variant_item.app }}/.config/{{ variant_item.app }}/{{ variant_item.src }}.{{ variant }}.{{ variant_item.ext }}"
+  register: _variant_src
+
+- name: link host-specific variant config
+  ansible.builtin.file:
+    src: "{{ variant_item.src }}.{{ variant }}.{{ variant_item.ext }}"
+    dest: "{{ stow_src }}{{ variant_item.app }}/.config/{{ variant_item.app }}/{{ variant_item.dest }}"
+    state: link
+    force: true
+  when: _variant_src.stat.exists

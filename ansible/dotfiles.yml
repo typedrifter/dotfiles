@@ -1,0 +1,47 @@
+---
+# dotfiles sync playbook.
+#
+# this is unprivileged half. it pulls latest repo, loads host vars, links
+# per-variant configs, and restows dotfiles into $HOME. notify on success or
+# failure so keybind can run it without grug staring at terminal.
+#
+# package install separate -- run install-packages.yml with -K when need sudo.
+
+- hosts: localhost
+  connection: local
+  vars_files:
+    - group_vars/all.yml
+  tasks:
+    - name: run dotfiles sync
+      block:
+        - name: git pull latest changes
+          ansible.builtin.command: "git -C {{ playbook_dir | dirname }} pull --ff-only"
+          register: _dotfiles_pull
+          changed_when: "'Updating' in _dotfiles_pull.stdout or 'Fast-forward' in _dotfiles_pull.stdout"
+
+        - ansible.builtin.include_role:
+            name: load-host-vars
+
+        - ansible.builtin.include_role:
+            name: variant-links
+
+        - ansible.builtin.include_role:
+            name: stow
+
+        - ansible.builtin.include_role:
+            name: notify
+          vars:
+            notify_title: "Dotfiles synced ✓"
+            notify_message: "{{ ansible_facts.hostname }} up to date"
+      rescue:
+        - ansible.builtin.include_role:
+            name: notify
+          vars:
+            notify_urgency: critical
+            notify_icon: dialog-error
+            notify_title: "Dotfiles sync failed ✗"
+            notify_message: "check the terminal output"
+
+        - name: fail the play after notifying
+          ansible.builtin.fail:
+            msg: "Dotfiles sync failed"

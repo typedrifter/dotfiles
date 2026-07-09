@@ -1,0 +1,17 @@
+---
+# Sends a transient desktop notification via notify-send.
+# Safe to run from headless/automated contexts: changed_when/failed_when are
+# both false, and DBUS_SESSION_BUS_ADDRESS is defaulted from the user session.
+
+- name: send desktop notification
+  ansible.builtin.command: |
+    notify-send -u {{ notify_urgency | default('low') }} \
+                -i {{ notify_icon | default('emblem-default') }} \
+                -t {{ notify_timeout | default(15000) }} \
+                -a Ansible \
+                "{{ notify_title }}" \
+                "{{ notify_message }}"
+  environment:
+    DBUS_SESSION_BUS_ADDRESS: "{{ ansible_env.DBUS_SESSION_BUS_ADDRESS | default('unix:path=/run/user/' ~ ansible_user_uid ~ '/bus') }}"
+  changed_when: false
+  failed_when: false

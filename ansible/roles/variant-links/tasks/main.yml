@@ -1,0 +1,10 @@
+---
+# before stow runs, point host-local config names at the right variant file.
+# host sets `variant` in host_vars/<hostname>.yml. symlink targets are gitignored.
+# grug check src exists first so we do not make broken dangling link.
+
+- name: link each variant config
+  ansible.builtin.include_tasks: link-one.yml
+  loop: "{{ variant_links }}"
+  loop_control:
+    loop_var: variant_item

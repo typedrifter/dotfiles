@@ -12,7 +12,7 @@ git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg 
 
 ## 2. Set the hostname
 
-Must match an inventory entry (`flc-thinkpad` / `flc-desktop`) so
+Must match an inventory entry (`flc-thinkpad` / `francois-desktop-linux`) so
 `host_vars/<hostname>.yml` gets loaded:
 
 ```sh
@@ -24,15 +24,21 @@ sudo hostnamectl set-hostname flc-thinkpad   # or flc-desktop
 ```sh
 git clone git@github.com:FLchs/dotfiles_wayland.git ~/Projects/dotfiles_wayland
 cd ~/Projects/dotfiles_wayland
-ansible-playbook ansible/local.yml -i ansible/inventory.yml
+
+# Install/update system and AUR packages (needs sudo password)
+ansible-playbook ansible/install-packages.yml -i ansible/inventory.yml -K
+
+# Apply dotfiles (no sudo needed)
+ansible-playbook ansible/dotfiles.yml -i ansible/inventory.yml
 ```
 
 ## 4. (Optional) auto-pull on a timer
 
 Backed by a systemd user unit or cron. Private repo requires a deploy key per box.
+This only runs the unprivileged sync; install packages manually when they change.
 
 ```sh
-ansible-pull -U git@github.com:FLchs/dotfiles_wayland.git ansible/local.yml
+ansible-pull -U git@github.com:FLchs/dotfiles_wayland.git ansible/dotfiles.yml
 ```
 
 ---

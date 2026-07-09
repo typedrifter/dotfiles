@@ -1,0 +1,10 @@
+---
+# Loads host-specific variables from host_vars/<ansible_hostname>.yml.
+# Kept in a role so both install-packages.yml and dotfiles.yml load them the same way.
+
+- name: load host-specific variables for {{ ansible_facts['hostname'] }}
+  ansible.builtin.include_vars:
+    dir: "{{ playbook_dir }}/host_vars"
+    files_matching: "{{ ansible_facts['hostname'] }}.yml"
+    ignore_unknown_extensions: true
+    depth: 1

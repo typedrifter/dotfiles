@@ -1,8 +1,9 @@
 ---
 # Two managed machines. Each runs ansible-playbook / ansible-pull locally.
-# Host-specific vars live in host_vars/<hostname>.yml, loaded by local.yml
-# via ansible_hostname (the OS fact) -- so this inventory is documentation and
-# future-SSH-ready, not strictly required for local apply.
+# Host-specific vars live in host_vars/<hostname>.yml and are loaded by the
+# load-host-vars role via ansible_hostname (the OS fact). This inventory file is
+# therefore documentation and future-SSH-ready, but not strictly required for a
+# local apply.
 
 all:
   hosts:
